@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: vshuk002/auth
+          image: us.gcr.io/ticketing-dev-vikas/auth
 ---
 apiVersion: v1
 kind: Service
