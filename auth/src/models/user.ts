@@ -17,16 +17,31 @@ interface UserDoc extends mongoose.Document {
   password: string;
 }
 
-const UserSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true
+const UserSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: true
+    },
+    password: {
+      type: String,
+      required: true
+    }
   },
-  password: {
-    type: String,
-    required: true
+  {
+    // the toJSON portion helps make sure we just get a response with id and email rather than
+    // _id, email, password, and __v. This is important because if services have different databases
+    // we need to make sure they would return similar objects, and having _id rather than id is only a Mongo thing
+    toJSON: {
+      transform(doc, ret) {
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.password;
+        delete ret.__v;
+      }
+    }
   }
-});
+);
 
 UserSchema.pre('save', async function(done) {
   // only hash password if created/modified
