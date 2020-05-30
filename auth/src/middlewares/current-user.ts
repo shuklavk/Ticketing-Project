@@ -16,6 +16,8 @@ declare global {
   }
 }
 
+// if user is logged in, it sets req.currentuser with payload
+// else there is no such property of req.currentuser
 export const currentUser = (
   req: Request,
   res: Response,
