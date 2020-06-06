@@ -1,6 +1,5 @@
 import express from 'express';
-import { currentUser } from '../middlewares/current-user';
-
+import { currentUser } from '@vikastickets/common';
 const router = express.Router();
 
 // This route is a check to see if user is logged in

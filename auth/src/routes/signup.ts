@@ -1,9 +1,7 @@
 import jwt from 'jsonwebtoken';
 import express, { Request, Response } from 'express';
-import { body, validationResult } from 'express-validator';
-import { validateRequest } from '../middlewares/valid-request';
-import { RequestValidationError } from '../errors/request-validation-errors';
-import { BadRequestError } from '../errors/bad-request-error';
+import { body } from 'express-validator';
+import { BadRequestError, validateRequest } from '@vikastickets/common';
 import { User } from '../models/user';
 const router = express.Router();
 
